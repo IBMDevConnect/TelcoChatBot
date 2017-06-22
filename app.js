@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 IBM Corp. All Rights Reserved.
+ * Copyright 2017 IBM Corp. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the 'License'); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -31,38 +31,39 @@ var vodafoneDiscoveryRequired = false;
 var ideaDiscoveryRequired = false;
 var airtelDiscoveryRequired = false;
 
+// Conversation workspace id
+var WORKSPACE_ID = vcapServices.WORKSPACE_ID || process.env.WORKSPACE_ID || "<workspace-id>";
+
 var app = express();
 
 // Bootstrap application settings
 app.use(express.static("./public")); // load UI from public folder
 app.use(bodyParser.json());
 
-//credentials
+// credentials
 var conversation_credentials = vcapServices.getCredentials("conversation");
 var cloudant_credentials = vcapServices.getCredentials("cloudantNoSQLDB");
 
-var WORKSPACE_ID = vcapServices.getCredentials('WORKSPACE_ID') || "<workspace-id>";
-//var WORKSPACE_ID = '54e1ed10-e643-49cf-87a3-a7f1a856bed3';
-
-// Create the service wrapper
+// Create the service wrappers
 var conversation = watson.conversation({
 	url : "https://gateway.watsonplatform.net/conversation/api",
 	username : conversation_credentials.username || '',
 	password : conversation_credentials.password || '',
-	version_date : "2016-07-11",
-	version : "v1"
+	version_date : process.env.CONVERSATION_VERSION_DATE,
+	version : process.env.CONVERSATION_VERSION
 });
 
 var discovery = new DiscoveryV1({
-  username: '2e0ac76e-5376-4773-9a22-76c036ca3f3b',
-  password: 'KDG2sfU2sdaI',
+  username: process.env.DISCOVERY_USERNAME,
+  password: process.env.DISCOVERY_PASSWORD,
   version_date: DiscoveryV1.VERSION_DATE_2017_04_27
 });
 
-var usersMap;
+var usersMap; // User details cache
 var cloudant = Cloudant({account:cloudant_credentials.username, password:cloudant_credentials.password});
-var db = cloudant.db.use('telco-users');
+var db = cloudant.db.use(process.env.CLOUDANT_DB_NAME);
 
+// Get the user details from database
 function loadUserData() {
 	usersMap = new Map();
 	db.list({include_docs:true}, function (err, data) {
@@ -78,7 +79,7 @@ function loadUserData() {
 
 loadUserData();
 
-// Endpoint called from the client side
+// Endpoint called from the client side whenever an input is submitted in the chat window
 app.post("/api/message", function(req, res) {
 
 	var workspace = WORKSPACE_ID;
@@ -137,28 +138,34 @@ app.post("/api/message", function(req, res) {
 				return res.status(err.code || 500).json(err);
 			}
 			if (data.context && data.context.updateEmail && data.context.updateEmail !== '') {
-				editProfile(userName, data.context.updateEmail);
+				updateEmail(userName, data.context.updateEmail);
 				data.context.updateEmail = '';
+			} else if (data.context && data.context.updateAddress && data.context.updateAddress !== '') {
+				updateAddress(userName, data.context.updateAddress);
+				data.context.updateAddress = '';
 			}
 
 			vodafoneDiscoveryRequired = false;
 			ideaDiscoveryRequired = false;
 			airtelDiscoveryRequired = false;
+
 			//Check the intent to see if a call to Discovery is required
-			if(data.intents[0] && data.intents[0].intent){
-				if(data.intents[0].intent=='Plan_Vodafone'){
-					vodafoneDiscoveryRequired = true;
-				} else if (data.intents[0].intent=='Plan_Idea') {
-					ideaDiscoveryRequired = true;
-				} else if (data.intents[0].intent=='Plan_Airtel') {
-					airtelDiscoveryRequired = true;
+			if (data.intents[0] && data.intents[0].intent) {
+				if (data.intents[0].intent == 'plans' ) {
+					if (data.entities[0].entity == 'service_provider' && data.entities[0].value == 'Vodafone') {
+						vodafoneDiscoveryRequired = true;
+					} else if (data.entities[0].entity == 'service_provider' && data.entities[0].value == 'Idea') {
+						ideaDiscoveryRequired = true;
+					} else if (data.entities[0].entity == 'service_provider' && data.entities[0].value == 'Airtel') {
+						airtelDiscoveryRequired = true;
+					}
 				}
 			}
 
 			if(vodafoneDiscoveryRequired){
 			discovery.query({
-			    environment_id: 'cdd6c5fa-f76f-47ea-ad49-6c669e9a652f',
-			    collection_id: '31a5eacf-e799-49d9-b521-8d07871e8316',
+			    environment_id: process.env.DISCOVERY_ENVIRONMENT_ID,
+			    collection_id: process.env.DISCOVERY_COLLECTION_ID,
 			    query: 'enriched_text.entities.text:Vodafone Plan',
 					passages: 'true'
 			  }, function(err, response) {
@@ -173,8 +180,8 @@ app.post("/api/message", function(req, res) {
 			   });
 			} else if (ideaDiscoveryRequired) {
 				discovery.query({
-				    environment_id: 'cdd6c5fa-f76f-47ea-ad49-6c669e9a652f',
-				    collection_id: '31a5eacf-e799-49d9-b521-8d07871e8316',
+				    environment_id: process.env.DISCOVERY_ENVIRONMENT_ID,
+				    collection_id: process.env.DISCOVERY_COLLECTION_ID,
 				    query: 'enriched_text.keywords.text:Idea',
 						passages: 'true'
 				  }, function(err, response) {
@@ -190,8 +197,8 @@ app.post("/api/message", function(req, res) {
 
 			} else if (airtelDiscoveryRequired) {
 				discovery.query({
-				    environment_id: 'cdd6c5fa-f76f-47ea-ad49-6c669e9a652f',
-				    collection_id: '31a5eacf-e799-49d9-b521-8d07871e8316',
+				    environment_id: process.env.DISCOVERY_ENVIRONMENT_ID,
+				    collection_id: process.env.DISCOVERY_COLLECTION_ID,
 				    query: 'enriched_text.entities.text:Bharti Airtel',
 						passages: 'true'
 				  }, function(err, response) {
@@ -214,7 +221,8 @@ app.post("/api/message", function(req, res) {
 
 });
 
-function editProfile(username, email) {
+// Update the email address
+function updateEmail(username, email) {
 	db.find({selector:{userName:username}}, function(err, result) {
 	  if (err) {
 	    throw err;
@@ -227,6 +235,31 @@ function editProfile(username, email) {
 	    "emailId": email,
 			"mobileNumber" : result.docs[0].mobileNumber,
 			"address" : result.docs[0].address
+	  };
+	  db.insert(user, function(err, body) {
+			if (err) {
+				throw err;
+			}
+			usersMap = null;
+			loadUserData();
+		});
+	});
+}
+
+// Update the address
+function updateAddress(username, address) {
+	db.find({selector:{userName:username}}, function(err, result) {
+	  if (err) {
+	    throw err;
+	  }
+	  var user = {
+			"_id": result.docs[0]._id,
+	    "_rev" : result.docs[0]._rev,
+			"userName" : result.docs[0].userName,
+			"name" : result.docs[0].name,
+	    "emailId": result.docs[0].emailId,
+			"mobileNumber" : result.docs[0].mobileNumber,
+			"address" : address
 	  };
 	  db.insert(user, function(err, body) {
 			if (err) {
