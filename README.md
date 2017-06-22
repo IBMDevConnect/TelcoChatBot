@@ -162,10 +162,12 @@ In the Details UI, copy the 36 character UNID **ID** field. This is the **WORKSP
 
 4. To load demo / sample data to the database, two versions of data are available under resources folder: *telco-users-cloudant.json* and *telco-users-cloudant.txt*
 
-5. Install couchimport tool to upload / download data to cloudant
+5. Install couchimport tool to upload / download data to cloudant using the following commnands:
 
+Open a bash terminal and run the following snippet:
 sudo npm install -g couchimport  
 
+To get the URL -- Got to the App section --> Runtime --> Environment Variable --> Under cloudant service check for the URL. 
 export COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"  
 
 export COUCH_DATABASE="telco-users"  
