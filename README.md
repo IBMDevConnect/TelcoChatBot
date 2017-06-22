@@ -29,6 +29,10 @@ Example commands that can be executed by the Conversation service are:
 
     view profile
     edit emailId
+    What are the available plans for Airtel
+    What are the available plans for Vodafone
+    view my account
+    view my bill
 
 ## Technical Architecture - Telco Chatbot
 <b>
