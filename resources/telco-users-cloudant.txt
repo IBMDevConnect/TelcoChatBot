@@ -1,0 +1,6 @@
+userName	name	mobileNumber	emailId	address
+ajay	Ajay Krishna	1234567890	ajay.krishna@telco.com	1, Krishna Street, Bangalore
+smitha	Smitha Rao	1243568790	smitha.rao@telco.com	2, Jayanagar, Bangalore
+rahul	Rahul Kumar	2134657809	rahul.kumar@telco.com	2, J.P.Nagar, Bangalore
+preethi	Preethi	1111111111	preethi@telco.com	4, Domlur, Bangalore
+rajesh	Rajesh	2222222222	rajesh@telco.com	5, Hebbal, Bangalore

@@ -1,0 +1,35 @@
+{
+  "userName": "ajay",
+  "name": "Ajay Krishna",
+  "mobileNumber": "1234567890",
+  "emailId": "ajay.krishna@telco.com",
+  "address": "1, Krishna Street, Bangalore"
+},
+{
+  "userName": "smitha",
+  "name": "Smitha Rao",
+  "mobileNumber": "1243568790",
+  "emailId": "smitha.rao@telco.com",
+  "address": "2, Jayanagar, Bangalore"
+},
+{
+  "userName": "rahul",
+  "name": "Rahul Kumar",
+  "mobileNumber": "2134657809",
+  "emailId": "rahul.kumar@telco.com",
+  "address": "2, J.P.Nagar, Bangalore"
+},
+{
+  "userName": "preethi",
+  "name": "Preethi",
+  "mobileNumber": "1111111111",
+  "emailId": "preethi@telco.com",
+  "address": "4, Domlur, Bangalore"
+},
+{
+  "userName": "rajesh",
+  "name": "Rajesh",
+  "mobileNumber": "2222222222",
+  "emailId": "rajesh@telco.com",
+  "address": "5, Hebbal, Bangalore"
+}
