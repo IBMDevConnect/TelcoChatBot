@@ -94,7 +94,8 @@ To configure the cloudant database please follow the below steps:
 Open a bash terminal and run the following snippet:
 sudo npm install -g couchimport  
 
-To get the URL -- Got to the App section --> Runtime --> Environment Variable --> Under cloudant service check for the URL. 
+To get the URL -- Got to the App section --> Runtime --> Environment Variable --> Under cloudant service check for the URL.
+
 export COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"  
 
 export COUCH_DATABASE="telco-users"  
@@ -113,8 +114,8 @@ For more information on workspaces, see the full  [Conversation service document
 
 2. Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your Bluemix credentials.
 
-3. Download the exported file that contains the Workspace contents by clicking [exported JSON file](https://github.com/DevConnect2017/TelcoChatBot)
-    - navigate to the resources folder to find `telcobot-conversation-workspace.json` file
+3. Download the exported file that contains the Workspace contents by clicking [exported JSON file](https://github.com/DevConnect17/TelcoChatBot)
+    - navigate to the resources folder to find `telcobot-conversation-workspace-handson.json` file
     - click on the "Raw" link which will open a browser
     - Select "Save As" and save the file as a json
 
@@ -132,7 +133,7 @@ In the Details UI, copy the 36 character UNID **ID** field. This is the **WORKSP
 
 1. Click on "conversation-service" from Bluemix Dashboard. In the landing page, click on "Launch Tool" button.
 
-2. Sign in to Watson Conversation editor. Import the workspace - *telcobot-workspace.json* from resources folder.
+2. Sign in to Watson Conversation editor. Import the workspace - *telcobot-conversation-workspace-handson.json* from resources folder.
 
 3. In the editor, click on "Deploy" from left hand navigation page. Copy the value of Workspace ID.
 
