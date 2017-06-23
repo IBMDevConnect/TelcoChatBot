@@ -53,7 +53,7 @@ Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registra
 
 1. Select "Deploy to Bluemix" icon below.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/DevConnect2017/TelcoChatBot)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBMDevConnect17/TelcoChatBot)
 
 2. This action deploys 1 application and 2 services. You can view this on your Bluemix Dashboard.
 
