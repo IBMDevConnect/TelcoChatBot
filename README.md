@@ -147,31 +147,6 @@ In the Details UI, copy the 36 character UNID **ID** field. This is the **WORKSP
 
 8. Click on Save button. The app will automatically restart.
 
-If the above is not working then work around is as follows:
-
-1. Go to DevOps screen and click on "Eclipse Orion Web IDE" and open in new window as shown below:
-
-![](readme_images/OrionEditor.png)
-
-2. In app.js line number 45 edit the workspace ID as shown below
-
-![](readme_images/WorkspaceIDEdit.png)
-
-3. Commit the changes by entering the comments as follows:
-
-![](readme_images/GitCommit.png)
-
-4. And then it will prompt for name and email id as follows:
-![](readme_images/CommitGitChanges.png)
-
-5. Click on the 'Push' icon on the left:
-![](readme_images/GitPushDone.png)
-
-6. Goto the DevOps --> Delivery pipeline of your project to see the redployment of the app:
-
-![](readme_images/ReDeployment.png)
-
-
 ## Running the app
 
 1. Launch the application from bluemix dashboard
