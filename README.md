@@ -92,6 +92,8 @@ To configure the cloudant database please follow the below steps:
 5. Install couchimport tool to upload / download data to cloudant using the following commnands:
 
 Open a bash terminal and run the following snippet:
+
+MAC:
 sudo npm install -g couchimport  
 
 To get the URL -- Got to the App section --> Runtime --> Environment Variable --> Under cloudant service check for the URL.
@@ -102,6 +104,17 @@ export COUCH_DATABASE="telco-users"
 
 cat telco-users-cloudant.txt | couchimport --db telco-users
 
+
+Windows:
+npm install -g couchimport  (Refer https://nodejs.org/download/release/npm/  for npm installers)
+
+To get the URL -- Got to the App section --> Runtime --> Environment Variable --> Under cloudant service check for the URL.
+
+set COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"
+
+set COUCH_DATABASE="telco-users"
+
+type telco-users-cloudant.txt | couchimport --db telco-users
 
 
 ### Importing a workspace
