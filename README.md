@@ -17,7 +17,7 @@ For more information about Conversation, see the [detailed documentation](https:
 
 ## How the app works
 
-The app interface is designed and trained for chatting with the telco customers. The chat interface is on the left, and the JSON that the JavaScript code receives from the server is on the right. Your questions and commands are run against a small set of sample data trained with intents like these:
+The app interface is designed and trained for chatting with the telco customers. Your questions and commands are run against a small set of sample data trained with intents like these:
 
     view profile
     view account
