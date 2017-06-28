@@ -39,7 +39,7 @@ Example commands that can be executed by the Conversation service are:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="readme_images/Telco-Architecture.png" width="800" height="350" align="center">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+</b>
 
 - The user writes a query about a service to the chatbot
 - The orchestrator accepts query, saves the user context & starts a REST call with the Cognitive APIs.
@@ -91,32 +91,47 @@ To configure the cloudant database please follow the below steps:
 
 5. Install couchimport tool to upload / download data to cloudant using the following commnands:
 
-MAC:
+**MAC / Linux:**
 
-Open a bash terminal and run the following snippet:
+Open the Terminal and run the following snippet:
 
-sudo npm install -g couchimport  
+`sudo npm install -g couchimport` 
 
-To get the URL -- Got to the App section --> Runtime --> Environment Variable --> Under cloudant service check for the URL.
+To get the URL, click on the App in Bluemix dashboard --> Runtime --> Environment Variable --> Under Cloudant service, check for the URL
 
-export COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"  
+`export COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"`  
 
-export COUCH_DATABASE="telco-users"  
+`export COUCH_DATABASE="telco-users"`  
 
-cat telco-users-cloudant.txt | couchimport --db telco-users
+`cat telco-users-cloudant.txt | couchimport --db telco-users`  
 
+**Windows:**
 
-Windows:
+Open Command Prompt and run:
 
-npm install -g couchimport  (Refer https://nodejs.org/download/release/npm/  for npm installers)
+`npm install -g couchimport` (Refer https://nodejs.org/download/release/npm/ for npm installers)
 
-To get the URL -- Got to the App section --> Runtime --> Environment Variable --> Under cloudant service check for the URL.
+To get the URL, click on the App in Bluemix dashboard --> Runtime --> Environment Variable --> Under Cloudant service, check for the URL
 
-set COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"
+`set COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"`
 
-set COUCH_DATABASE="telco-users"
+`set COUCH_DATABASE="telco-users"`
 
-type telco-users-cloudant.txt | couchimport --db telco-users
+`type telco-users-cloudant.txt | couchimport --db telco-users`  
+
+**Note:** 
+
+1. Install node.js for your OS from https://nodejs.org/
+
+2. To see if Node is installed, type the below on your command line
+
+`node -v`
+
+To see if Node Package Manager - npm is installed, type the below on your command line
+
+`npm -v`
+
+3. Make sure that the *telco-users-cloudant.txt* file is under the same folder from where the Terminal/Command prompt commands are issued
 
 
 ### Importing a workspace
