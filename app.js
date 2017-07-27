@@ -32,7 +32,7 @@ var ideaDiscoveryRequired = false;
 var airtelDiscoveryRequired = false;
 
 // Conversation workspace id
-var WORKSPACE_ID = vcapServices.WORKSPACE_ID || process.env.WORKSPACE_ID || "<workspace-id>";
+var WORKSPACE_ID = vcapServices.WORKSPACE_ID || process.env.WORKSPACE_ID || "<workspace-id>"; 
 
 var app = express();
 
@@ -182,7 +182,7 @@ app.post("/api/message", function(req, res) {
 				discovery.query({
 				    environment_id: process.env.DISCOVERY_ENVIRONMENT_ID,
 				    collection_id: process.env.DISCOVERY_COLLECTION_ID,
-				    query: 'enriched_text.keywords.text:Idea Plan',
+				    query: 'enriched_text.entities.text:Idea plan',
 						passages: 'true'
 				  }, function(err, response) {
 				        if (err) {
@@ -199,7 +199,7 @@ app.post("/api/message", function(req, res) {
 				discovery.query({
 				    environment_id: process.env.DISCOVERY_ENVIRONMENT_ID,
 				    collection_id: process.env.DISCOVERY_COLLECTION_ID,
-				    query: 'enriched_text.entities.text:Bharti Airtel Plan',
+				    query: 'enriched_text.entities.text:Airtel Plan',
 						passages: 'true'
 				  }, function(err, response) {
 				        if (err) {
