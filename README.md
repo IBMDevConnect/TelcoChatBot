@@ -189,8 +189,6 @@ Under **Add data to this collection** use **Drag and drop your documents here or
 
 9. Click on Save button. The app will automatically restart.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![userdefined](readme_images/userdefined.png)
-
 ## Running the app
 
 1. Launch the application from bluemix dashboard
