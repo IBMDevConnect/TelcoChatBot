@@ -182,7 +182,7 @@ app.post("/api/message", function(req, res) {
 				discovery.query({
 				    environment_id: process.env.DISCOVERY_ENVIRONMENT_ID,
 				    collection_id: process.env.DISCOVERY_COLLECTION_ID,
-				    query: 'enriched_text.keywords.text:Idea',
+				    query: 'enriched_text.keywords.text:Idea Plan',
 						passages: 'true'
 				  }, function(err, response) {
 				        if (err) {
@@ -199,7 +199,7 @@ app.post("/api/message", function(req, res) {
 				discovery.query({
 				    environment_id: process.env.DISCOVERY_ENVIRONMENT_ID,
 				    collection_id: process.env.DISCOVERY_COLLECTION_ID,
-				    query: 'enriched_text.entities.text:Bharti Airtel',
+				    query: 'enriched_text.entities.text:Bharti Airtel Plan',
 						passages: 'true'
 				  }, function(err, response) {
 				        if (err) {
