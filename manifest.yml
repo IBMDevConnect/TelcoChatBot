@@ -6,6 +6,10 @@ declared-services:
   cloudant-db:
     label: cloudantNoSQLDB
     plan: Lite
+  telco-discovery-service:
+    label: discovery
+    plan: free
+plan: free
 applications:
 - path: .
   memory: 256M
@@ -15,3 +19,4 @@ applications:
   services:
   - conversation-service
   - cloudant-db
+  - telco-discovery-service
