@@ -29,8 +29,8 @@ Example commands that can be executed by the Conversation service are:
 
     view profile
     edit emailId
-    What are the available plans for Airtel
     What are the available plans for Vodafone
+    What are the available plans for Idea
     view my account
     view my bill
 
@@ -159,23 +159,37 @@ In the Details UI, copy the 36 character UNID **ID** field. This is the **WORKSP
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](readme_images/workspaceid.PNG)
 
-## Configure the WCS
+## Load the Discovery documents
 
-1. Click on "conversation-service" from Bluemix Dashboard. In the landing page, click on "Launch Tool" button.
+Launch the **Watson Discovery tool**. Create a new data collection and give the data collection a unique name.
 
-2. Sign in to Watson Conversation editor. Import the workspace - *telcobot-conversation-workspace-handson.json* from resources folder.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![collection](readme_images/new_collection.png)
 
-3. In the editor, click on "Deploy" from left hand navigation page. Copy the value of Workspace ID.
+Save the **environment_id** and **collection_id** for next step.
 
-4. Click on the deployed app from Bluemix Dashboard
+Under **Add data to this collection** use **Drag and drop your documents here or browse from computer** to seed the content with the four documents in **resources/Discovery** folder
 
-5. Go to Runtime -> Environment variables section
+## Configure the WCS and Watson Discovery Service 
 
-6. Under "User defined" section at the botton, click on Add button
+1. Click on the deployed app from Bluemix Dashboard
 
-7. Under Name, enter WORKSPACE_ID (with out quotes) and under Value, copy the workspace id from step 3 above
+2. Go to Runtime -> Environment variables section
 
-8. Click on Save button. The app will automatically restart.
+3. Under "User defined" section at the botton, click on Add button
+
+4. Under Name, enter WORKSPACE_ID (with out quotes) and under Value, copy the workspace id from importing workspace step
+
+5. Click on Add button again and, enter DISCOVERY_USERNAME and under Value, copy the Disocvery service username
+
+6. Click on Add button again and, enter DISCOVERY_PASSWORD and under Value, copy the Disocvery service password
+
+7. Click on Add button again and, enter DISCOVERY_ENVIRONMENT_ID and under Value, copy the environment id from previous step
+
+8. Click on Add button again and, enter DISCOVERY_COLLECTION_ID and under Value, copy the environment id from previous step
+
+9. Click on Save button. The app will automatically restart.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![userdefined](readme_images/userdefined.png)
 
 ## Running the app
 
@@ -198,21 +212,6 @@ In the Details UI, copy the 36 character UNID **ID** field. This is the **WORKSP
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/filter.PNG)
 
-#### In the new Bluemix:
-
-- Log in to Bluemix, you'll be taken to the dashboard
-- Select **Compute**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/compute.PNG)
-
-- Select the application you previously created
-- Select **Logs**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/logs1.PNG)
-
-- If you want, filter the Log Type by selecting the drop-down and selecting **Application(APP)**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/filter1.PNG)
 
 ## License
 
