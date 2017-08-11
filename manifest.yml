@@ -8,7 +8,7 @@ declared-services:
     plan: Lite
   telco-discovery-service:
     label: discovery
-    plan: free
+    plan: Lite
 plan: free
 applications:
 - path: .
