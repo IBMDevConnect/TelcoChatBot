@@ -5,7 +5,7 @@ declared-services:
     plan: free
   cloudant-db:
     label: cloudantNoSQLDB
-    plan: lite
+    plan: Lite
   telco-discovery-service:
     label: discovery
     plan: lite
