@@ -87,9 +87,9 @@ To configure the cloudant database please follow the below steps:
 
 3. Give a name to the database, like <b>telco-users</b>
 
-4. To load demo / sample data to the database, two versions of data are available under resources folder: *telco-users-cloudant.json* and *telco-users-cloudant.txt*
+4. To load demo / sample data to the database, two versions of data are available under resources folder: *telco-users-\<number\>.json* and *telco-users-cloudant.txt*
 
-5. Install couchimport tool to upload / download data to cloudant using the following commnands:
+5. Install couchimport tool to upload data to cloudant using the following commnands:
 
 **MAC / Linux:**
 
