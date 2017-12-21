@@ -1,15 +1,15 @@
-# Build a Telco Conversation Dashboard application using Bluemix & Watson Services
+# Build a Telco Conversation Dashboard application using IBM Cloud & Watson Services
 
 ## Overview
 
-This application demonstrates how the Bluemix Conversation service can be used to build a simple on-board telco chat application.
+This application demonstrates how the Watson Conversation service can be used to build a simple on-board telco chat application.
 
 * We will learn and understand how to integrate the Conversation, Discovery and Cloudant services.
 
-Following services are used from Bluemix:
-1. Watson Conversation
-2. Watson Cloudant
-3. Watson Discovery
+Following services are used from IBM Cloud:
+1. Watson Conversation Service
+2. Cloudant NoSQLDB Database Service
+3. Watson Discovery Service
 
 See the app [demo](http://conversation-demo.mybluemix.net/)
 
@@ -47,17 +47,17 @@ Example commands that can be executed by the Conversation service are:
 
 ## Pre-requisities
 
-Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registration/)
+Ensure that you have a [IBM Cloud account](https://console.ng.bluemix.net/registration/)
 
 ### Deploy the app and explore the conversation flow
 
-1. Select "Deploy to Bluemix" icon below.
+1. Select "Deploy to IBM Cloud" icon below.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBMDevConnect17/TelcoChatBot)
 
-2. This action deploys 1 application and 2 services. You can view this on your Bluemix Dashboard.
+2. This action deploys 1 application and 2 services. You can view this on your IBM Cloud Dashboard.
 
-3. Log in with your existing Bluemix account or Sign up
+3. Log in with your existing IBM Cloud account or Sign up
 
 4. Name your app and select your REGION, ORGANIZATION and SPACE. Then select DEPLOY.
 
@@ -81,7 +81,7 @@ To configure the cloudant database please follow the below steps:
 
 ### Cloudant
 
-1. Click on "cloudant-db" from the Bluemix Dashboard. In the landing page, click on Launch button.
+1. Click on "cloudant-db" from the IBM Cloud Dashboard. In the landing page, click on Launch button.
 
 2. Click on Databases from left hand navigation. Click on "Create Database" from top right corner.
 
@@ -111,7 +111,7 @@ Open Command Prompt and run:
 
 `npm install -g couchimport` (Refer https://nodejs.org/download/release/npm/ for npm installers)
 
-To get the URL, click on the App in Bluemix dashboard --> Runtime --> Environment Variable --> Under Cloudant service, check for the URL
+To get the URL, click on the App in IBM Cloud dashboard --> Runtime --> Environment Variable --> Under Cloudant service, check for the URL
 
 `set COUCH_URL="https://username:password@xxx-bluemix.cloudant.com"`
 
@@ -140,9 +140,9 @@ To use the app you're creating, you need to add a workspace to your Conversation
 
 For more information on workspaces, see the full  [Conversation service documentation](https://www.ibm.com/watson/developercloud/doc/conversation/index.html).
 
-1. Navigate to the Bluemix dashboard, select the Conversation service that you created
+1. Navigate to the IBM Cloud dashboard, select the Conversation service that you created
 
-2. Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your Bluemix credentials.
+2. Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your IBM Cloud credentials.
 
 3. Download the exported file that contains the Workspace contents by clicking [exported JSON file](https://github.com/DevConnect17/TelcoChatBot)
     - navigate to the resources folder to find `telcobot-conversation-workspace-handson.json` file
@@ -171,7 +171,7 @@ Under **Add data to this collection** use **Drag and drop your documents here or
 
 ## Configure the WCS and Watson Discovery Service 
 
-1. Click on the deployed app from Bluemix Dashboard
+1. Click on the deployed app from IBM Cloud Dashboard
 
 2. Go to Runtime -> Environment variables section
 
@@ -191,16 +191,16 @@ Under **Add data to this collection** use **Drag and drop your documents here or
 
 ## Running the app
 
-1. Launch the application from bluemix dashboard
+1. Launch the application from IBM Cloud dashboard
 
 2. Enter an username, say, ajay to login and see the chat bot working
 
 
-### Troubleshooting in Bluemix
+### Troubleshooting in IBM Cloud
 
 #### In the Classic Experience:
 
-- Log in to Bluemix, you'll be taken to the dashboard
+- Log in to IBM Cloud, you'll be taken to the dashboard
 - Navigate to the the application you previously created
 - Select **Logs**
 
